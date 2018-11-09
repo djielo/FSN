@@ -1,0 +1,394 @@
+[INFO] --- docker-maven-plugin:1.0.0:help (default-cli) @ fsn-revolution ---
+[INFO] docker-maven-plugin 1.0.0
+  A maven plugin for docker
+
+This plugin has 5 goals:
+
+docker:build
+  Used to build docker images.
+
+  Available parameters:
+
+    baseImage
+      The base image to use. Ignored if dockerDirectory is set.
+      User property: dockerBaseImage
+
+    buildArgs
+      
+      User property: dockerBuildArgs
+
+    buildDirectory
+      All resources will be copied to this directory before building the image.
+      User property: project.build.directory
+
+    cmd
+      The cmd command for the image. Ignored if dockerDirectory is set.
+      User property: dockerCmd
+
+    defaultProfile
+      
+      User property: dockerDefaultBuildProfile
+
+    dockerCertPath
+      
+      User property: dockerCertPath
+
+    dockerDirectory
+      Directory containing the Dockerfile. If the value is not set, the plugin
+      will generate a Dockerfile using the required baseImage value, plus the
+      optional entryPoint, cmd and maintainer values. If this value is set the
+      plugin will use the Dockerfile in the specified folder.
+      User property: dockerDirectory
+
+    dockerHost
+      URL of the docker host as specified in pom.xml.
+      User property: dockerHost
+
+    entryPoint
+      The entry point of the image. Ignored if dockerDirectory is set.
+      User property: dockerEntryPoint
+
+    env
+      
+      User property: dockerEnv
+
+    exposes
+      
+      User property: dockerExposes
+
+    forceTags (Default: false)
+      Flag to use force option while tagging. Defaults to false.
+      User property: forceTags
+
+    imageName
+      Built image will be given this name.
+      User property: dockerImageName
+
+    imageTags
+      Additional tags to tag the image with.
+      User property: dockerImageTags
+
+    labels
+      The labels for the image
+      User property: dockerLabels
+
+    maintainer
+      The maintainer of the image. Ignored if dockerDirectory is set.
+      User property: dockerMaintainer
+
+    mavenProject (Default: ${project})
+      
+
+    noCache (Default: false)
+      Set to true to pass the `--no-cache` flag to the Docker daemon when
+      building an image.
+      User property: noCache
+
+    profile
+      
+      User property: dockerBuildProfile
+
+    pullOnBuild (Default: false)
+      Flag to attempt to pull base images even if older images exists locally.
+      Sends the equivalent of `--pull=true` to Docker daemon when building the
+      image.
+      User property: pullOnBuild
+
+    pushImage (Default: false)
+      Flag to push image after it is built. Defaults to false.
+      User property: pushImage
+
+    pushImageTag (Default: false)
+      Flag to push image using their tags after it is built. Defaults to false.
+      User property: pushImageTag
+
+    registryUrl
+      
+      User property: registryUrl
+
+    resources
+      Resources to include in the build. Specify resources by using the standard
+      resource elements as defined in the resources section in the pom
+      reference. If dockerDirectory is not set, the targetPath value is the
+      location in the container where the resource should be copied to. The
+      value is relative to '/' in the container, and defaults to '.'. If
+      dockerDirectory is set, targetPath is relative to the dockerDirectory, and
+      defaults to '.'. In that case, the Dockerfile can copy the resources into
+      the container using the ADD instruction.
+      User property: dockerResources
+
+    retryPushCount (Default: 5)
+      Number of retries for failing pushes, defaults to 5.
+      User property: retryPushCount
+
+    retryPushTimeout (Default: 10000)
+      Retry timeout for failing pushes, defaults to 10 seconds.
+      User property: retryPushTimeout
+
+    rm (Default: true)
+      Set to false to pass the `--rm` flag to the Docker daemon when building an
+      image.
+      User property: rm
+
+    runs
+      The run commands for the image.
+      User property: dockerRuns
+
+    saveImageToTarArchive
+      File path to save image as a tar archive after it is built.
+      User property: saveImageToTarArchive
+
+    serverId
+      
+      User property: serverId
+
+    skipDocker (Default: false)
+      Flag to skip docker goal, making goal a no-op. This can be useful when
+      docker goal is bound to Maven phase, and you want to skip Docker command.
+      Defaults to false.
+      User property: skipDocker
+
+    skipDockerBuild (Default: false)
+      Flag to skip docker build, making build goal a no-op. This can be useful
+      when docker:build is bound to package goal, and you want to build a jar
+      but not a container. Defaults to false.
+      User property: skipDockerBuild
+
+    skipDockerPush (Default: false)
+      Flag to skip docker push, making push goal a no-op. This can be useful
+      when docker:push is bound to deploy goal, and you want to deploy a jar but
+      not a container. Defaults to false.
+      User property: skipDockerPush
+
+    squashRunCommands (Default: false)
+      Flag to squash all run commands into one layer. Defaults to false.
+      User property: squashRunCommands
+
+    tagInfoFile (Default: ${project.build.testOutputDirectory}/image_info.json)
+      Path to JSON file to write when tagging images. Default is
+      ${project.build.testOutputDirectory}/image_info.json
+      User property: tagInfoFile
+
+    useGitCommitId (Default: false)
+      If specified as true, a tag will be generated consisting of the first 7
+      characters of the most recent git commit ID, resulting in something like
+      image:df8e8e6. If there are any changes not yet committed, the string
+      '.DIRTY' will be appended to the end. Note, if a tag is explicitly
+      specified in the newName parameter, this flag will be ignored.
+      User property: useGitCommitId
+
+    user
+      The user for the image. Ignored if dockerDirectory is set
+      User property: user
+
+    volumes
+      The volumes for the image
+      User property: dockerVolumes
+
+    workdir
+      The workdir for the image. Ignored if dockerDirectory is set
+      User property: workdir
+
+docker:help
+  Display help information on docker-maven-plugin.
+  Call mvn docker:help -Ddetail=true -Dgoal=<goal-name> to display parameter
+  details.
+
+  Available parameters:
+
+    detail (Default: false)
+      If true, display all settable properties for each goal.
+      User property: detail
+
+    goal
+      The name of the goal for which to show help. If unspecified, all goals
+      will be displayed.
+      User property: goal
+
+    indentSize (Default: 2)
+      The number of spaces per indentation level, should be positive.
+      User property: indentSize
+
+    lineLength (Default: 80)
+      The maximum length of a display line, should be positive.
+      User property: lineLength
+
+docker:push
+  Pushes a docker image repository to the specified docker registry.
+
+  Available parameters:
+
+    dockerCertPath
+      
+      User property: dockerCertPath
+
+    dockerHost
+      URL of the docker host as specified in pom.xml.
+      User property: dockerHost
+
+    imageName
+      Name of image to push.
+      Required: Yes
+      User property: imageName
+
+    registryUrl
+      
+      User property: registryUrl
+
+    retryPushCount (Default: 5)
+      Number of retries for failing pushes, defaults to 5.
+      User property: retryPushCount
+
+    retryPushTimeout (Default: 10000)
+      Retry timeout for failing pushes, defaults to 10 seconds.
+      User property: retryPushTimeout
+
+    serverId
+      
+      User property: serverId
+
+    skipDocker (Default: false)
+      Flag to skip docker goal, making goal a no-op. This can be useful when
+      docker goal is bound to Maven phase, and you want to skip Docker command.
+      Defaults to false.
+      User property: skipDocker
+
+    skipDockerPush (Default: false)
+      Flag to skip docker push, making push goal a no-op. This can be useful
+      when docker:push is bound to deploy goal, and you want to deploy a jar but
+      not a container. Defaults to false.
+      User property: skipDockerPush
+
+docker:removeImage
+  Removes a docker image.
+
+  Available parameters:
+
+    dockerCertPath
+      
+      User property: dockerCertPath
+
+    dockerHost
+      URL of the docker host as specified in pom.xml.
+      User property: dockerHost
+
+    imageName
+      Name of image to remove.
+      Required: Yes
+      User property: imageName
+
+    imageTags
+      Additional tags to tag the image with.
+      User property: dockerImageTags
+
+    registryUrl
+      
+      User property: registryUrl
+
+    retryPushCount (Default: 5)
+      Number of retries for failing pushes, defaults to 5.
+      User property: retryPushCount
+
+    retryPushTimeout (Default: 10000)
+      Retry timeout for failing pushes, defaults to 10 seconds.
+      User property: retryPushTimeout
+
+    serverId
+      
+      User property: serverId
+
+    skipDocker (Default: false)
+      Flag to skip docker goal, making goal a no-op. This can be useful when
+      docker goal is bound to Maven phase, and you want to skip Docker command.
+      Defaults to false.
+      User property: skipDocker
+
+    skipDockerPush (Default: false)
+      Flag to skip docker push, making push goal a no-op. This can be useful
+      when docker:push is bound to deploy goal, and you want to deploy a jar but
+      not a container. Defaults to false.
+      User property: skipDockerPush
+
+docker:tag
+  Applies a tag to a docker image. Optionally, useGitCommitId can be used to
+  generate a tag consisting of the first 7 characters of the most recent git
+  commit ID.
+
+  Available parameters:
+
+    dockerCertPath
+      
+      User property: dockerCertPath
+
+    dockerHost
+      URL of the docker host as specified in pom.xml.
+      User property: dockerHost
+
+    forceTags (Default: false)
+      Flag to use force option while tagging. Defaults to false.
+      User property: forceTags
+
+    image
+      Can be either an image ID (e.g. 8dbd9e392a96), or an image name with an
+      optional tag. If no tag is specified, the docker daemon will automatically
+      try to use the tag 'latest'.
+      Required: Yes
+      User property: image
+
+    newName
+      The new name that will be applied to the source image. If a tag is not
+      specified, the docker daemon will automatically apply the tag 'latest' to
+      the specified repo. Only a repo without a tag should be specified if
+      useGitCommitId is set to true.
+      Required: Yes
+      User property: newName
+
+    pushImage (Default: false)
+      Flag to push image after it is tagged.
+      User property: pushImage
+
+    registryUrl
+      
+      User property: registryUrl
+
+    retryPushCount (Default: 5)
+      Number of retries for failing pushes, defaults to 5.
+      User property: retryPushCount
+
+    retryPushTimeout (Default: 10000)
+      Retry timeout for failing pushes, defaults to 10 seconds.
+      User property: retryPushTimeout
+
+    serverId
+      
+      User property: serverId
+
+    skipDocker (Default: false)
+      Flag to skip docker goal, making goal a no-op. This can be useful when
+      docker goal is bound to Maven phase, and you want to skip Docker command.
+      Defaults to false.
+      User property: skipDocker
+
+    skipDockerPush (Default: false)
+      Flag to skip docker push, making push goal a no-op. This can be useful
+      when docker:push is bound to deploy goal, and you want to deploy a jar but
+      not a container. Defaults to false.
+      User property: skipDockerPush
+
+    skipDockerTag (Default: false)
+      Flag to skip tagging, making goal a no-op. This can be useful when
+      docker:tag is bound to the package goal, and you want to mvn package
+      without tagging the image. Defaults to false.
+      User property: skipDockerTag
+
+    tagInfoFile
+      Path to JSON file to write when tagging images
+      User property: tagInfoFile
+
+    useGitCommitId (Default: false)
+      If specified as true, a tag will be generated consisting of the first 7
+      characters of the most recent git commit ID, resulting in something like
+      image:df8e8e6. If there are any changes not yet committed, the string
+      '.DIRTY' will be appended to the end. Note, if a tag is explicitly
+      specified in the newName parameter, this flag will be ignored.
+      User property: useGitCommitId
